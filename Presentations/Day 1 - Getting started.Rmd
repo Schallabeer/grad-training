@@ -73,5 +73,55 @@ knitr::include_graphics("figures/clone.PNG")
 
 >- To find help on a function or package that you have already installed, go to the ***Help*** tab on the bottom right and search for a package name or function in the search box
 >- Alternatively, you can run `??function_name`. E.g. `??tidyverse`
+>-There are also many ['cheatsheets'](https://www.rstudio.com/resources/cheatsheets/) available that gives you the need-to-know information on some of the most populat packages. Some can be found under <strong>Help > Cheatsheets</strong>
 
 
+## Exercise 1
+
+Use the Base-r cheatsheet to generate loan data. Each account has:
+
+- *id* - which is used to identify a specific account (just make it account-1 for now)
+- *segment* - which is randomly generated from (A,B,C)
+- *start_balance* - which is randomly generated between (5000,6000)
+- *interest_rate* - An annual rate randomly generated between (5%,20%) converted to a monthly rate
+- *n* - The term of the loan a fixed 60 months
+
+## Exercise 1
+
+- calculate the monthly instalment as:  
+$pmt=start\_balance\times \frac{r\times(1+r)^n}{(1+r)^n-1}$
+- calculate contractual outstanding balance as:  
+$balance\_contractual_0=start\_balance\times(1+r) - pmt$ 
+$balance\_contractual_t=balance\_contractual_{t-1}\times(1+r) - pmt$
+
+
+## Exercise 1
+
+- calculate a probability of default termstructure as:  
+`PD<-dlnorm(seq(0.05,3,by = 0.05), meanlog = 0, sdlog = 1, log = FALSE)/6`
+
+loop over $t \subset (1,n)$ and create vectors for:
+
+- a flag to see if the person made the payment as:
+$made\_payment_t<-I(1-PD_t \ge U)$
+
+- actual outstanding balance as:  
+$balance\_actual_0=start\_balance\times(1+r) - pmt\times made\_payment_0$ 
+$balance\_actual_t=balance\_actual_{t-1}\times(1+r) - pmt\times made\_payment_t$
+
+## Exercise 1 {.small}
+
+Create a dataset containing the columns:
+
+- id,
+- segment,
+- start_balance,
+-interest_rate,
+- n,
+- age as a vector from 1 to n
+- pmt,
+- balance_contractual
+- made_payment
+- balance_actual,
+- arrears_amt as balance_contractual - balance_actual
+- cd_bucket as -ceiling(arrears_amt/pmt)

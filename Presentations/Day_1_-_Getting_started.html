@@ -181,7 +181,57 @@ Right-click &gt; TortiseGit &gt; Settings &gt; Network. Then enter your username
 
 <ul class = 'build'>
 <li>To find help on a function or package that you have already installed, go to the <strong><em>Help</em></strong> tab on the bottom right and search for a package name or function in the search box</li>
-<li>Alternatively, you can run <code>??function_name</code>. E.g. <code>??tidyverse</code></li>
+<li>Alternatively, you can run <code>??function_name</code>. E.g. <code>??tidyverse</code> -There are also many <a href='https://www.rstudio.com/resources/cheatsheets/' title=''>&#39;cheatsheets&#39;</a> available that gives you the need-to-know information on some of the most populat packages. Some can be found under <strong>Help &gt; Cheatsheets</strong></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Exercise 1</h2></hgroup><article  id="exercise-1">
+
+<p>Use the Base-r cheatsheet to generate loan data. Each account has:</p>
+
+<ul>
+<li><em>id</em> - which is used to identify a specific account (just make it account-1 for now)</li>
+<li><em>segment</em> - which is randomly generated from (A,B,C)</li>
+<li><em>start_balance</em> - which is randomly generated between (5000,6000)</li>
+<li><em>interest_rate</em> - An annual rate randomly generated between (5%,20%) converted to a monthly rate</li>
+<li><em>n</em> - The term of the loan a fixed 60 months</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Exercise 1</h2></hgroup><article  id="exercise-1-1">
+
+<ul>
+<li>calculate the monthly instalment as:<br/>\(pmt=start\_balance\times \frac{r\times(1+r)^n}{(1+r)^n-1}\)</li>
+<li>calculate contractual outstanding balance as:<br/>\(balance\_contractual_0=start\_balance\times(1+r) - pmt\) \(balance\_contractual_t=balance\_contractual_{t-1}\times(1+r) - pmt\)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Exercise 1</h2></hgroup><article  id="exercise-1-2">
+
+<ul>
+<li>calculate a probability of default termstructure as:<br/><code>PD&lt;-dlnorm(seq(0.05,3,by = 0.05), meanlog = 0, sdlog = 1, log = FALSE)/6</code></li>
+</ul>
+
+<p>loop over \(t \subset (1,n)\) and create vectors for:</p>
+
+<ul>
+<li><p>a flag to see if the person made the payment as: \(made\_payment_t&lt;-I(1-PD_t \ge U)\)</p></li>
+<li><p>actual outstanding balance as:<br/>\(balance\_actual_0=start\_balance\times(1+r) - pmt\times made\_payment_0\) \(balance\_actual_t=balance\_actual_{t-1}\times(1+r) - pmt\times made\_payment_t\)</p></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Exercise 1</h2></hgroup><article  id="exercise-1-3" class="small">
+
+<p>Create a dataset containing the columns:</p>
+
+<ul>
+<li>id,</li>
+<li>segment,</li>
+<li>start_balance, -interest_rate,</li>
+<li>n,</li>
+<li>age as a vector from 1 to n</li>
+<li>pmt,</li>
+<li>balance_contractual</li>
+<li>made_payment</li>
+<li>balance_actual,</li>
+<li>arrears_amt as balance_contractual - balance_actual</li>
+<li>cd_bucket as -ceiling(arrears_amt/pmt)</li>
 </ul></article></slide>
 
 
