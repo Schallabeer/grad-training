@@ -23,10 +23,13 @@ output:
 
 # Day 1 - Getting started
 ## Day 1 - Agenda
+- Why R?
 - Installing R
+- Cloning git repo
 - Installing Packages
 - Finding Help
 
+# Why R?
 
 ## Installing R & Rstudio
 
@@ -41,16 +44,18 @@ output:
 >- Install Git and then TortoiseGit
 
 ## Setup git proxy
+Right-click > TortiseGit > Settings > Network. Then enter your username and password.
 <center>
-```{r, out.width="60%", echo=FALSE}
+```{r, out.width="50%", echo=FALSE}
 knitr::include_graphics("figures/proxy.PNG")
 ```
 </center>
 
 ## Clone git repo
+Right-click > Git Clone > <strong> https://github.com/gbisschoff/grad-training.git </strong>  
 
 <center>
-```{r, out.width="60%", echo=FALSE}
+```{r, out.width="50%", echo=FALSE}
 knitr::include_graphics("figures/clone.PNG")
 ```
 </center>

@@ -27,6 +27,7 @@ output:
 - Functions
 - Spark
 
+# Functions
 ## Functions
 Example 1 - Hello World
 
@@ -74,6 +75,15 @@ data<-rio::import(file = "Data/titanic_train.csv",setclass = "tbl",integer64="do
 rio::export(x = titanic_train,file = "Data/titanic_train.csv")
 ```
 
+# Spark & db
+
+## Data Science Toolchain 
+<center>
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("figures/DataScience.PNG")
+```
+</center>
+
 ## Spark & db
 When working with big data use Spark
 Spark is much faster than working with just R and can handle data that is of very very large size
@@ -85,6 +95,10 @@ library(sparklyr)
 spark_home_set("Spark/spark-2.2.1-bin-hadoop2.7")
 sc<-spark_connect(master="local") # Create a connection to spark
 
+```
+
+## Import
+```{r,eval=FALSE}
 data<-spark_read_csv(
   sc,
   "titanic",
@@ -97,6 +111,7 @@ data<-spark_read_csv(
 import_iris<-copy_to(sc,iris,"spark_iris",overwrite=TRUE)
 ```
 
+
 ## Exercise 1
 
 1. Write a function (*sim.pi*) that takes one argument (*iterations*) with a default value of 1000  
@@ -107,12 +122,5 @@ import_iris<-copy_to(sc,iris,"spark_iris",overwrite=TRUE)
 5. return `4*in/iterations` 
 6. Congradulations you estimated $\pi$!
 
-<!-- ## Exercise 2 -->
-
-<!-- 1. Open R and install the packages sparklyr.   -->
-<!-- 2. Connect to Spark.  -->
-<!-- 3. Import the iris data to Spark -->
-<!-- 4. Partition the data into a training (50%) and test (50%) dataset. Use sdf_partition -->
-<!-- 5. Use  -->
 
 
