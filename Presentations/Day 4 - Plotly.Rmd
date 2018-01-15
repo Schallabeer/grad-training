@@ -1,0 +1,275 @@
+---
+title: "Day 4 - Plotly"
+author: "Geyer Bisschoff"
+date: "January, 2018"
+output: 
+  ioslides_presentation:
+    widescreen: true
+    toc: true
+    toc_float: true
+    theme: "flatly"
+---
+
+
+## Introduction
+- Day 1 - Getting started
+- Day 2 - Functions & Spark
+- Day 3 - Tidyverse
+- Day 4 - Plotly
+- Day 5 - Shiny Introduction
+- Day 6 - Reactivity
+- Day 7 - Modules
+- Day 8 - Shiny Project
+
+
+
+# Day 4 - Plotly
+## Day 4 - Agenda
+
+- Scatter plots
+- Line plots
+- Bar charts
+- Heatmaps
+- Box plots
+- Histograms
+```{r,  include=FALSE}
+library(plotly)
+library(tidyverse)
+pal_deloitte<-c("#86BC25", "#C4D600",  "#43B02A",	"#046A38", 	"#2C5234","#0097A9","#62B5E5","#00A3E0","#0076A8","#012169")
+pal_deloitte2<-c("#DDEFE8",	"#9DD4CF", 	"#6FC2B4","#00ABAB","#0097A9","#007680","#004F59")
+
+
+```
+
+## Scatter plots
+
+```{r , eval=FALSE}
+diamonds%>%
+  dplyr::sample_n(1000)%>%
+  plot_ly(colors = pal_deloitte)%>%
+  add_markers(
+    x = ~carat, 
+    y = ~price, 
+    color = ~color,
+    size = ~carat, 
+    text = ~paste("Clarity: ", clarity)
+  )
+```
+
+## Scatter plots {.flexbox .vcenter}
+```{r , echo=FALSE}
+diamonds%>%
+  dplyr::sample_n(1000)%>%
+  plot_ly(colors = pal_deloitte)%>%
+  add_markers(x = ~carat, y = ~price, color = ~color,
+              size = ~carat, text = ~paste("Clarity: ", clarity))
+
+```
+
+## Line plots
+```{r , eval=FALSE}
+economics_long%>%
+  plot_ly(
+    x=~date,
+    y=~value,
+    color=~variable,
+    colors = pal_deloitte,
+    type="scatter",
+    mode="lines"
+  )
+```
+
+## Line plots {.flexbox .vcenter}
+```{r , echo=FALSE}
+economics_long%>%
+  plot_ly(
+    x=~date,
+    y=~value,
+    color=~variable,
+    colors = pal_deloitte,
+    type="scatter",
+    mode="lines"
+  )
+```
+
+
+
+## Bar charts 
+```{r,eval=FALSE }
+diamonds %>% 
+  count(cut, clarity) %>%
+  plot_ly(colors = pal_deloitte)%>%
+  add_bars(
+    x = ~cut, 
+    y = ~n, 
+    color = ~clarity
+  )
+```
+
+## Bar charts {.flexbox .vcenter}
+```{r,echo=FALSE }
+diamonds %>% 
+  count(cut, clarity) %>%
+  plot_ly(colors = pal_deloitte)%>%
+  add_bars(
+    x = ~cut, 
+    y = ~n, 
+    color = ~clarity
+  )
+```
+
+
+## Bar charts 
+```{r , eval=FALSE}
+diamonds%>%
+  group_by(color,clarity)%>%
+  summarise(n=n())%>%
+  mutate(
+    nn=sum(n),
+    prop=n/nn
+  )%>%
+  plot_ly(x = ~color,colors = pal_deloitte)%>%
+  add_bars(
+    y = ~prop, 
+    color = ~clarity
+  ) %>%
+  layout(barmode = "stack")
+
+```
+
+## Bar charts {.flexbox .vcenter}
+```{r , echo=FALSE}
+diamonds%>%
+  group_by(color,clarity)%>%
+  summarise(n=n())%>%
+  mutate(
+    nn=sum(n),
+    prop=n/nn
+  )%>%
+  plot_ly(x = ~color,colors = pal_deloitte)%>%
+  add_bars(
+    y = ~prop, 
+    color = ~clarity
+  ) %>%
+  layout(barmode = "stack")
+
+```
+
+
+## Heatmaps
+```{r , eval=FALSE}
+diamonds%>%
+  group_by(cut, clarity) %>%
+  summarise(N=n())%>%
+  plot_ly() %>%
+  add_heatmap( 
+    x = ~cut, 
+    y = ~clarity, 
+    z =~N
+  )
+
+```
+## Heatmaps {.flexbox .vcenter}
+```{r , echo=FALSE}
+diamonds%>%
+  group_by(cut, clarity) %>%
+  summarise(N=n())%>%
+  plot_ly() %>%
+  add_heatmap( 
+    x = ~cut, 
+    y = ~clarity, 
+    z =~N
+  )
+
+```
+
+
+
+## Box plots
+
+```{r , eval=FALSE}
+diamonds%>%
+  plot_ly(colors = pal_deloitte)%>%
+  add_boxplot(
+    x = ~cut, 
+    y = ~price, 
+    color = ~clarity
+  ) %>%
+  layout(boxmode = "group")
+
+```
+
+## Box plots {.flexbox .vcenter}
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+diamonds%>%
+  plot_ly(colors = pal_deloitte , type="box")%>%
+  add_boxplot(
+    x = ~cut, 
+    y = ~price, 
+    color = ~clarity
+  ) %>%
+  layout(boxmode = "group")
+
+```
+
+
+## Histograms
+```{r , eval=FALSE}
+plot_ly(alpha = 0.6,colors = pal_deloitte) %>%
+  add_histogram(x = ~rnorm(500)) %>%
+  add_histogram(x = ~rnorm(500) + 1) %>%
+  layout(barmode = "overlay")
+```
+## Histograms {.flexbox .vcenter}
+```{r , echo=FALSE}
+plot_ly(alpha = 0.6,colors = pal_deloitte) %>%
+  add_histogram(x = ~rnorm(500)) %>%
+  add_histogram(x = ~rnorm(500) + 1) %>%
+  layout(barmode = "overlay")
+```
+
+
+
+## Histograms
+```{r , eval=FALSE}
+plot_ly(alpha = 0.6,colors = pal_deloitte) %>%
+  add_histogram(x = ~rnorm(500)) %>%
+  add_histogram(x = ~rnorm(500) + 1) %>%
+  layout(barmode = "stack")
+```
+## Histograms {.flexbox .vcenter}
+```{r , echo=FALSE}
+plot_ly(alpha = 0.6,colors = pal_deloitte) %>%
+  add_histogram(x = ~rnorm(500)) %>%
+  add_histogram(x = ~rnorm(500) + 1) %>%
+  layout(barmode = "stack")
+```
+
+## Histograms
+```{r , eval=FALSE}
+diamonds%>%
+  plot_ly(colors = pal_deloitte2)%>%
+  add_histogram2d(x = ~carat, y = ~price)
+```
+
+## Histograms {.flexbox .vcenter}
+```{r , echo=FALSE}
+diamonds%>%
+  plot_ly(colors = pal_deloitte2)%>%
+  add_histogram2d(x = ~carat, y = ~price)
+```
+
+## Histograms
+```{r , eval=FALSE}
+diamonds%>%
+  plot_ly(colors = pal_deloitte2)%>%
+  add_histogram2dcontour(x = ~carat, y = ~price)
+```
+## Histograms {.flexbox .vcenter}
+```{r , echo=FALSE}
+diamonds%>%
+  plot_ly(colors = pal_deloitte2)%>%
+  add_histogram2dcontour(x = ~carat, y = ~price)
+```
+
+
