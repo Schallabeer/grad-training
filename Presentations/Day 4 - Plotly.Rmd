@@ -40,6 +40,12 @@ pal_deloitte2<-c("#DDEFE8",	"#9DD4CF", 	"#6FC2B4","#00ABAB","#0097A9","#007680",
 
 
 ```
+## Data Science Toolchain 
+<center>
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("figures/DataScience.PNG")
+```
+</center>
 
 ## Scatter plots
 

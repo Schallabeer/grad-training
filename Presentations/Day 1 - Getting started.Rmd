@@ -73,7 +73,7 @@ knitr::include_graphics("figures/clone.PNG")
 
 >- To find help on a function or package that you have already installed, go to the ***Help*** tab on the bottom right and search for a package name or function in the search box
 >- Alternatively, you can run `??function_name`. E.g. `??tidyverse`
->-There are also many ['cheatsheets'](https://www.rstudio.com/resources/cheatsheets/) available that gives you the need-to-know information on some of the most populat packages. Some can be found under <strong>Help > Cheatsheets</strong>
+>-There are also many ['cheatsheets'](https://www.rstudio.com/resources/cheatsheets/) available that gives you the need-to-know information on some of the most popular packages. Some can be found under <strong>Help > Cheatsheets</strong>
 
 
 ## Exercise 1
@@ -88,7 +88,7 @@ Use the Base-r cheatsheet to generate loan data. Each account has:
 
 ## Exercise 1
 
-- calculate the monthly instalment as:  
+- calculate the monthly installment as:  
 $pmt=start\_balance\times \frac{r\times(1+r)^n}{(1+r)^n-1}$
 - calculate contractual outstanding balance as:  
 $balance\_contractual_0=start\_balance\times(1+r) - pmt$ 
@@ -97,7 +97,7 @@ $balance\_contractual_t=balance\_contractual_{t-1}\times(1+r) - pmt$
 
 ## Exercise 1
 
-- calculate a probability of default termstructure as:  
+- calculate a probability of default term structure as:  
 `PD<-dlnorm(seq(0.05,3,by = 0.05), meanlog = 0, sdlog = 1, log = FALSE)/6`
 
 loop over $t \subset (1,n)$ and create vectors for:
@@ -125,3 +125,8 @@ Create a dataset containing the columns:
 - balance_actual,
 - arrears_amt as balance_contractual - balance_actual
 - cd_bucket as -ceiling(arrears_amt/pmt)
+
+
+## Example solution
+
+See <strong> Data > transition_data.csv </strong> for example output. 

@@ -36,6 +36,13 @@ output:
 ```{r,  include=FALSE}
 library(tidyverse)
 ```
+## Data Science Toolchain 
+<center>
+```{r, out.width="90%", echo=FALSE}
+knitr::include_graphics("figures/DataScience.PNG")
+```
+</center>
+
 
 ## select
 

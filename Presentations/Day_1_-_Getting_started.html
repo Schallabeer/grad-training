@@ -181,7 +181,7 @@ Right-click &gt; TortiseGit &gt; Settings &gt; Network. Then enter your username
 
 <ul class = 'build'>
 <li>To find help on a function or package that you have already installed, go to the <strong><em>Help</em></strong> tab on the bottom right and search for a package name or function in the search box</li>
-<li>Alternatively, you can run <code>??function_name</code>. E.g. <code>??tidyverse</code> -There are also many <a href='https://www.rstudio.com/resources/cheatsheets/' title=''>&#39;cheatsheets&#39;</a> available that gives you the need-to-know information on some of the most populat packages. Some can be found under <strong>Help &gt; Cheatsheets</strong></li>
+<li>Alternatively, you can run <code>??function_name</code>. E.g. <code>??tidyverse</code> -There are also many <a href='https://www.rstudio.com/resources/cheatsheets/' title=''>&#39;cheatsheets&#39;</a> available that gives you the need-to-know information on some of the most popular packages. Some can be found under <strong>Help &gt; Cheatsheets</strong></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Exercise 1</h2></hgroup><article  id="exercise-1">
@@ -199,14 +199,14 @@ Right-click &gt; TortiseGit &gt; Settings &gt; Network. Then enter your username
 </article></slide><slide class=""><hgroup><h2>Exercise 1</h2></hgroup><article  id="exercise-1-1">
 
 <ul>
-<li>calculate the monthly instalment as:<br/>\(pmt=start\_balance\times \frac{r\times(1+r)^n}{(1+r)^n-1}\)</li>
+<li>calculate the monthly installment as:<br/>\(pmt=start\_balance\times \frac{r\times(1+r)^n}{(1+r)^n-1}\)</li>
 <li>calculate contractual outstanding balance as:<br/>\(balance\_contractual_0=start\_balance\times(1+r) - pmt\) \(balance\_contractual_t=balance\_contractual_{t-1}\times(1+r) - pmt\)</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Exercise 1</h2></hgroup><article  id="exercise-1-2">
 
 <ul>
-<li>calculate a probability of default termstructure as:<br/><code>PD&lt;-dlnorm(seq(0.05,3,by = 0.05), meanlog = 0, sdlog = 1, log = FALSE)/6</code></li>
+<li>calculate a probability of default term structure as:<br/><code>PD&lt;-dlnorm(seq(0.05,3,by = 0.05), meanlog = 0, sdlog = 1, log = FALSE)/6</code></li>
 </ul>
 
 <p>loop over \(t \subset (1,n)\) and create vectors for:</p>
@@ -232,7 +232,11 @@ Right-click &gt; TortiseGit &gt; Settings &gt; Network. Then enter your username
 <li>balance_actual,</li>
 <li>arrears_amt as balance_contractual - balance_actual</li>
 <li>cd_bucket as -ceiling(arrears_amt/pmt)</li>
-</ul></article></slide>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Example solution</h2></hgroup><article  id="example-solution">
+
+<p>See <strong> Data &gt; transition_data.csv </strong> for example output.</p></article></slide>
 
 
   <slide class="backdrop"></slide>

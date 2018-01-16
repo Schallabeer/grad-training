@@ -214,10 +214,19 @@ import_iris&lt;-copy_to(sc,iris,&quot;spark_iris&quot;,overwrite=TRUE)</pre>
 <ol>
 <li>Write a function (<em>sim.pi</em>) that takes one argument (<em>iterations</em>) with a default value of 1000<br/></li>
 <li>Generate two vectors (<em>x</em>,<em>y</em>) of length <em>iterations</em> which uniformly distributed between (-1,1)<br/></li>
-<li>Test whether if each of the cordinates fall inside the unit circle<br/><strong class="yellow2">HINT:</strong> <code>ifelse( x^2 + y^2 &lt;=1, TRUE, FALSE)</code><br/></li>
-<li>Count how many of the cordinates fell inside the unit circle (<em>in</em>)<br/></li>
+<li>Test whether if each of the coordinates fall inside the unit circle<br/><strong class="yellow2">HINT:</strong> <code>ifelse( x^2 + y^2 &lt;=1, TRUE, FALSE)</code><br/></li>
+<li>Count how many of the coordinates fell inside the unit circle (<em>in</em>)<br/></li>
 <li>return <code>4*in/iterations</code></li>
-<li>Congradulations you estimated \(\pi\)!</li>
+<li>Congratulations you estimated \(\pi\)!</li>
+</ol>
+
+</article></slide><slide class=""><hgroup><h2>Exercise 2</h2></hgroup><article  id="exercise-2">
+
+<ol>
+<li>Remember the code we wrote on day one to simulate a loan. Make that code a function that accepts <strong><em>id</em></strong> as a numeric and <strong><em>PD</em></strong> as the probability of default term structure.</li>
+<li>Use <strong><em>lapply</em></strong> and simulate 10 000 accounts</li>
+<li>Use <strong><em>dplyr::bind_rows</em></strong> to combine all the accounts into one dataset</li>
+<li>User <strong><em>rio::export</em></strong> to save the data we just created. We will continue using the data tomorrow when we start looking at data science in R.</li>
 </ol></article></slide>
 
 
