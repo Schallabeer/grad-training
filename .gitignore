@@ -4,6 +4,6 @@
 .Ruserdata
 .Renviron
 derby.log
-README.Rmd
+*.Rmd
 metastore_db/
 Spark/
