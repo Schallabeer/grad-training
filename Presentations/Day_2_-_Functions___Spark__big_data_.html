@@ -186,6 +186,14 @@ rio::export(x = titanic_train,file = &quot;Data/titanic_train.csv&quot;)</pre>
 
 </center>
 
+</article></slide><slide class=""><hgroup><h2>Download Spark</h2></hgroup><article  id="download-spark">
+
+<ol>
+<li>Download <a href='http://apache.is.co.za/spark/spark-2.2.1/spark-2.2.1-bin-hadoop2.7.tgz' title=''>Spark</a></li>
+<li>Create a Spark directory on your C drive (C:/Spark)</li>
+<li>Unzip Spark into the <em>Spark</em> directory</li>
+</ol>
+
 </article></slide><slide class=""><hgroup><h2>Spark &amp; db</h2></hgroup><article  id="spark-db-1">
 
 <p>When working with big data use Spark Spark is much faster than working with just R and can handle data that is of very very large size Note that not all R functions work in Spark</p>
@@ -193,8 +201,12 @@ rio::export(x = titanic_train,file = &quot;Data/titanic_train.csv&quot;)</pre>
 <pre class = 'prettyprint lang-r'>install.packages(&quot;sparklyr&quot;)
 library(sparklyr)
 
-spark_home_set(&quot;Spark/spark-2.2.1-bin-hadoop2.7&quot;)
-sc&lt;-spark_connect(master=&quot;local&quot;) # Create a connection to spark</pre>
+spark_home_set(&quot;C:/Spark/spark-2.2.1-bin-hadoop2.7&quot;)
+sc&lt;-spark_connect(master=&quot;local&quot;) # Create a connection to spark
+
+# Do all your analysis
+
+spark_disconnect(sc)</pre>
 
 </article></slide><slide class=""><hgroup><h2>Import</h2></hgroup><article  id="import">
 

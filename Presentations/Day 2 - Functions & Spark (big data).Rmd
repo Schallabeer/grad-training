@@ -84,6 +84,13 @@ knitr::include_graphics("figures/DataScience.PNG")
 ```
 </center>
 
+## Download Spark
+
+1. Download [Spark](http://apache.is.co.za/spark/spark-2.2.1/spark-2.2.1-bin-hadoop2.7.tgz)
+2. Create a Spark directory on your C drive (C:/Spark) 
+3. Unzip Spark into the *Spark* directory
+
+
 ## Spark & db
 When working with big data use Spark
 Spark is much faster than working with just R and can handle data that is of very very large size
@@ -92,9 +99,12 @@ Note that not all R functions work in Spark
 install.packages("sparklyr")
 library(sparklyr)
 
-spark_home_set("Spark/spark-2.2.1-bin-hadoop2.7")
+spark_home_set("C:/Spark/spark-2.2.1-bin-hadoop2.7")
 sc<-spark_connect(master="local") # Create a connection to spark
 
+# Do all your analysis
+
+spark_disconnect(sc)
 ```
 
 ## Import
