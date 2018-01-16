@@ -8,3 +8,4 @@ metastore_db/
 Spark/
 *.Rmd
 /Presentations/figures
+/R
