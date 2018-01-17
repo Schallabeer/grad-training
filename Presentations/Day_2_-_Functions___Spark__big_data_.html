@@ -170,11 +170,22 @@ fit&lt;-glm(
 
 </article></slide><slide class=""><hgroup><h2>Functions</h2></hgroup><article  id="functions-4">
 
-<p>Example 4 - use &#39;rio&#39; package to read and write data from files</p>
+<p>Example 4 - use &#39;rio&#39; package to read and write (smallish) data from files</p>
 
 <pre class = 'prettyprint lang-r'>install.packages(&quot;rio&quot;)
 data&lt;-rio::import(file = &quot;Data/titanic_train.csv&quot;,setclass = &quot;tbl&quot;,integer64=&quot;double&quot;)
 rio::export(x = titanic_train,file = &quot;Data/titanic_train.csv&quot;)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Loops</h2></hgroup><article  id="loops">
+
+<p>In R there are many ways to repeat the same calculations many times</p>
+
+<ul>
+<li>for(variable in sequence ){ Do something }</li>
+<li>while( condition ){ Do something }</li>
+<li>apply family of functions (I mostly use lapply)</li>
+<li>purrr package (part of the tidyverse)</li>
+</ul>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Spark &amp; db</h2></hgroup><article  id="spark-db">
 
