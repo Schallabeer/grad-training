@@ -13,7 +13,7 @@ generate_account<-function(id,PD){
   
   pmt<-start_balance*(interest_rate*(1+interest_rate)^n)/((1+interest_rate)^n-1)
   
-  for(i in 1:n){
+  for(i in 1:60){
     if(i==1){
       balance_contractual<-start_balance*(1+interest_rate)-pmt
       
@@ -48,7 +48,7 @@ generate_account<-function(id,PD){
 
 
 account<-lapply(
-  1:10000,
+  1:100,
   generate_account,
   PD=PD
 )
