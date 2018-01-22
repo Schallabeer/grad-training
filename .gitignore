@@ -9,3 +9,5 @@ Spark/
 *.Rmd
 /Presentations/figures
 /R
+.httr-oauth
+/twitter_token.rds
