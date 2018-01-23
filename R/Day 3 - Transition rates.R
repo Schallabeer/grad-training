@@ -25,7 +25,9 @@ rr<-data%>%
   mutate(
     prop=total/sum(total),
     prop.n=n/sum(n)
-  )
+  )%>%
+  sdf_register(name = "rr")
+
 
 
 tr<-rr%>%
